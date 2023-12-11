@@ -68,15 +68,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderWidth: 0,
         padding: 5,
+        fontFamily: 'Kalam_400Regular',
     },
     dateCell: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
+        fontFamily: 'Kalam_400Regular',
     },
     clickedDate: {
         marginBottom: 200,
     },
     encouragement: {
         marginBottom: 5,
+        fontFamily: 'Comfortaa_400Regular',
     },
     emotionsCell: {
         flexDirection: 'row',
@@ -91,6 +94,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         margin: 5,
+        fontFamily: 'Comfortaa_400Regular',
     },
     paragraphCell: {
         borderWidth: 1,
@@ -101,5 +105,6 @@ const styles = StyleSheet.create({
         padding: 10,
         flex: 2,
         textAlign: 'left',
+        fontFamily: 'Kalam_400Regular',
     },
 });

@@ -62,9 +62,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderWidth: 0,
         padding: 5,
+        fontFamily: 'Kalam_400Regular',
     },
     dateCell: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
+        fontFamily: 'Kalam_400Regular',
     },
     clickedDate: {
         marginBottom: 180,
@@ -76,6 +78,7 @@ const styles = StyleSheet.create({
     messageParagraph: {
         flex: 1,
         textAlign: 'left',
+        fontFamily: 'Kalam_400Regular',
     },
     messageAuthor: {
         fontStyle: 'italic',

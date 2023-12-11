@@ -5,8 +5,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import MyDiaryData from '../screens/MyDiaryData';
 
-import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
-
 // Sample diary data
 const diaryData = [
     {
@@ -33,26 +31,12 @@ const diaryData = [
 
 export default function MyDiaryScreen({ navigation }) {
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-    const [fontsLoaded] = useFonts({
-      Comfortaa_400Regular
-    });
-
+    
     const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
 
     const toggleDropdown = (index) => {
       setOpenDropdownIndex((prevIndex) => (prevIndex === index ? null : index));
     };
-
-    if (!fontsLoaded) {
-        return (
-            <View style={styles.container}>
-                <ActivityIndicator />
-                <Text style={styles.loading}>
-                    Loading...
-                </Text>
-            </View>
-        );
-    }
 
     return (
         <ScrollView style={styles.scrollContainer}>
