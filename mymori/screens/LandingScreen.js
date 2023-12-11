@@ -10,7 +10,7 @@ export default function LandingScreen({ navigation }) {
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
     const [fontsLoaded] = useFonts({
         Comfortaa_400Regular,
-        Kalam_400Regular
+        // Kalam_400Regular
     });
 
     if (!fontsLoaded) {

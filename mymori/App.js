@@ -60,7 +60,8 @@ export default function App() {
           name="MessageWriting"
           component={MessageWriting}
           options={{ title: 'Message Writing', headerShown: false }}
-        />        <Stack.Screen
+        />
+        <Stack.Screen
           name="Confirm"
           component={ConfirmScreen}
           options={{ title: 'Confirm', headerShown: false }}
