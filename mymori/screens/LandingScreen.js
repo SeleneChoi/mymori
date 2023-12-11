@@ -3,12 +3,14 @@ import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, 
 import { LinearGradient } from "expo-linear-gradient";
 
 import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
+import styles_btn from '../components/styles_button';
 
 export default function LandingScreen({ navigation }) {
 
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
     const [fontsLoaded] = useFonts({
-        Comfortaa_400Regular
+        Comfortaa_400Regular,
+        Kalam_400Regular
     });
 
     if (!fontsLoaded) {
@@ -41,11 +43,12 @@ export default function LandingScreen({ navigation }) {
                     style={styles.tree}
                     source={require('../assets/LandingTree.png')}
                 />
-                <View style={styles.buttonContainer}>
+                <View>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('Onboarding')}
+                        onPress={() => navigation.navigate('Onboarding1')}
+                        style={styles_btn.buttonContainer_light}
                     >
-                        <Text style={styles.button}>
+                        <Text style={styles_btn.button}>
                             Start Your Journey
                         </Text>
                     </TouchableOpacity>
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     top: {
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 120,
+        marginTop: 100,
     },
     logo: {},
     heading: {
@@ -89,23 +92,7 @@ const styles = StyleSheet.create({
         marginTop: 0,
     },
     tree: {
-        width: 420,
-        height: 420,
+        width: 450,
+        height: 450,
     },
-    buttonContainer: {
-        alignSelf: 'center',
-        // width: 210,
-        position: 'absolute',
-        bottom: 60,
-        backgroundColor: "#BBAAFB",
-        borderRadius: 6,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-    },
-    button: {
-        fontFamily: 'Comfortaa_400Regular',
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 16,
-    }
 });

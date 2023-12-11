@@ -16,16 +16,45 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-            name="Landing"
-            component={LandingScreen}
-            options={{ title: 'Welcome', headerShown: false }}
+          name="Landing"
+          component={LandingScreen}
+          options={{ title: 'Welcome', headerShown: false }}
         />
         <Stack.Screen
-          name="Onboarding"
-          component={OnboardingScreen}
-          options={{ title: 'Onboarding...', headerShown: false }}
+          name="Onboarding1"
+          component={OnboardingScreen1}
+          options={{ title: 'Onboarding1111', headerShown: false }}
         />
         <Stack.Screen
+          name="Onboarding2"
+          component={OnboardingScreen2}
+          options={{ title: 'Onboarding2222', headerShown: false }}
+        />
+        <Stack.Screen
+          name="Onboarding3"
+          component={OnboardingScreen3}
+          options={{ title: 'Onboarding3333', headerShown: false }}
+        />
+        <Stack.Screen
+          name="Onboarding4"
+          component={OnboardingScreen4}
+          options={{ title: 'Onboarding4444', headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Home', headerShown: false }}
+        />
+        <Stack.Screen
+          name="MessagePop"
+          component={MessagePop}
+          options={{ title: 'Message Pop-up', headerShown: false }}
+        />
+        <Stack.Screen
+          name="MessageWriting"
+          component={MessageWriting}
+          options={{ title: 'Message Writing', headerShown: false }}
+        />        <Stack.Screen
           name="Confirm"
           component={ConfirmScreen}
           options={{ title: 'Confirm', headerShown: false }}
