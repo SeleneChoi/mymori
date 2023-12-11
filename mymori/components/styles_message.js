@@ -68,10 +68,9 @@ const styles_message = StyleSheet.create({
         marginHorizontal: 15,
         paddingTop: 25,
         paddingHorizontal: 25,
-        fontFamily: "Kalam_400Regular",
     },
     message: {
-
+        fontFamily: "Kalam_400Regular",
     },
 });
 

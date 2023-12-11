@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image, Button } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
+import { useFonts, Comfortaa_400Regular } from "@expo-google-fonts/comfortaa";
+import { Kalam_400Regular } from "@expo-google-fonts/kalam";
+
 import styles_btn from '../components/styles_button';
 
 export default function LandingScreen({ navigation }) {
@@ -10,7 +12,7 @@ export default function LandingScreen({ navigation }) {
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
     const [fontsLoaded] = useFonts({
         Comfortaa_400Regular,
-        // Kalam_400Regular
+        Kalam_400Regular
     });
 
     if (!fontsLoaded) {

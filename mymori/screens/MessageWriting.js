@@ -37,7 +37,7 @@ export default function MessageWriting({ navigation }) {
                     </Text>
                 </TouchableOpacity>
                 <View style={styles_message.innerContainer}>
-                    <Text styles={styles_message.message}>
+                    <Text style={styles_message.message}>
                         I don’t understand why it’s so hard for me to say what I want sometimes. I wish I can just speak out my mind.
                     </Text>
                 </View>
