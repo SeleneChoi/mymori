@@ -2,7 +2,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LandingScreen from './screens/LandingScreen';
-import OnboardingScreen from './screens/OnboardingScreen';
+import OnboardingScreen1 from './screens/OnboardingScreen1';
+import OnboardingScreen2 from './screens/OnboardingScreen2';
+import OnboardingScreen3 from './screens/OnboardingScreen3';
+import OnboardingScreen4 from './screens/OnboardingScreen4';
+import HomeScreen from './screens/HomeScreen';
+import MessagePop from './screens/MessagePop';
+import MessageWriting from './screens/MessageWriting';
 import ConfirmScreen from './screens/ConfirmScreen';
 import CompleteScreen from './screens/CompleteScreen';
 import MyDiaryScreen from './screens/MyDiaryScreen';
