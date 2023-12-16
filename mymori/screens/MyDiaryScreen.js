@@ -1,43 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import MyDiaryData from '../screens/MyDiaryData';
 
-// Sample diary data
-const diaryData = [
-    {
-        date: 'June 24, 2023',
-        emotions: ['Nervous'],
-        paragraph: 'When I feel like I’ll say something wrong or stupid, I try to write down what I want to say first beforehand. It helped me a lot, hope this can help you too.',
-    },
-    {
-        date: 'June 21, 2023',
-        emotions: ['Unconfident'],
-        paragraph: 'Feeling a bit unconfident, anxious, and nervous today. I think I will try to write down what I want to say first beforehand.',
-    },
-    {
-        date: 'June 19, 2023',
-        emotions: ['Validated'],
-        paragraph: 'Feeling a bit anxious and unconfident today. Trying to focus on the positive emotions like feeling validated, connected, and inspired. Hoping for a better day!',
-    },
-    {
-        date: 'June 18, 2023',
-        emotions: ['Connected'],
-        paragraph: 'Had some moments of nervousness today, but overall feeling connected and inspired. Writing down my thoughts to stay focused and positive.',
-    }
-];
+import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
 
 export default function MyDiaryScreen({ navigation }) {
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-    
+    // Load fonts
+    const[fontsLoaded] = useFonts({
+        Comfortaa_400Regular,
+    });
+
+        // State to store the diary data
+    const [diaryData, setDiaryData] = useState([]);
+
+    // State to track the index of the open dropdown
     const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
 
     const toggleDropdown = (index) => {
-      setOpenDropdownIndex((prevIndex) => (prevIndex === index ? null : index));
+        setOpenDropdownIndex((prevIndex) => (prevIndex === index ? null : index));
+
     };
 
+    
+  // useEffect hook to fetch diary data when the component mounts
+  useEffect(() => {
+    // Fetch diary data from the specified API endpoint
+    fetch("http://mymori.julie-chan.ca/api/v1/journals/read.php?api_key=2a32d7ed-ee8c-4561-a8bb-161463b8ada8")
+      // Parse the response as JSON
+      .then((res) => res.json())
+      // Handle the parsed JSON data
+      .then(
+        // Callback function executed on successful resolution
+        (result) => {
+          // Update the component's state with the fetched diary data
+          setDiaryData(result.journals);
+        },
+        // Callback function executed on error
+        (error) => {
+          // Log an error message to the console
+          console.error('Error fetching data:', error);
+        }
+      );
+  }, []); // Dependency array ensures the effect runs only once when the component mounts
+
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+        <Text style={styles.loading}>Loading...</Text>
+      </View>
+    );
+  }
+    
+  
     return (
         <ScrollView style={styles.scrollContainer}>
             <AnimatedLinearGradient
@@ -91,6 +110,7 @@ export default function MyDiaryScreen({ navigation }) {
                     <Text style={styles.cardText}>My Diary</Text>
 
                     <View style={styles.dropdownContainer}>
+                        {/* Map through diaryData and render MyDiaryData components */}
                         {diaryData.map((entry, index) => (
                             <MyDiaryData
                                 key={index}
@@ -102,15 +122,16 @@ export default function MyDiaryScreen({ navigation }) {
                         ))}
                     </View>
                     
-                    <Image
+                    {/* <Image
                         style={styles.pageNumber}
                         source={require('../assets/pagenumber.png')}
-                    />
+                    /> */}
                 </LinearGradient>
             </AnimatedLinearGradient>
         </ScrollView>
     );
 }
+
 
 const styles = StyleSheet.create({
     scrollContainer: {
