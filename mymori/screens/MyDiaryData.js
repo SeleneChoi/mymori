@@ -1,45 +1,66 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function MyDiaryData({ entry, isOpen, onToggle, index }) {
-    const isEven = index % 2 === 0;
-    const backgroundColor = isEven ? '#BBAAFB' : '#FFA6C3';
+  const containerColors = ['#BBAAFB', '#FFA6C3']; 
 
-    const getEmotionColor = (emotion) => {
-        return ['Validated', 'Connected', 'Inspired'].includes(emotion) ? '#98DE8D' : '#FFA6C3';
-    };
+  const containerBackgroundColor =
+    containerColors[index % containerColors.length];
 
-    return (
-        <View style={[styles.tableRow, isOpen && styles.clickedDate, { backgroundColor }]}>
-        <TouchableOpacity onPress={onToggle}>
-            <Text style={[styles.tableCell, styles.dateCell]}>
-            {entry.date}
-            </Text>
-        </TouchableOpacity>
-        {isOpen && (
-            <View style={styles.dropdown}>
-            <Text style={styles.encouragement}>
-                Today's Encouragement
-            </Text>
-            <View style={styles.emotionsCell}>
-                {entry.emotions.map((emotion, index) => (
-                    <Text 
-                        key={index} 
-                        style={[styles.emotionPill, { backgroundColor: getEmotionColor(emotion) }]}
-                    >
-                    {emotion}
-                </Text>
-                ))}
-            </View>
-            <Text style={styles.paragraphCell}>
-                {entry.paragraph}
-            </Text>
-            </View>
-        )}
+  const getEmotionColor = (mood) => {
+    switch (mood) {
+
+    // POSITIVE EMOTIONS
+      case 'connected':
+        return '#98DE8D';
+      case 'validated':
+        return '#98DE8D';
+      case 'inspired':
+        return '#98DE8D';
+
+    // NEGATIVE EMOTIONS
+      case 'anxious':
+        return '#FFA6C3';
+      case 'unconfident':
+        return '#FFA6C3';
+      case 'nervous':
+        return '#FFA6C3';
+    
+    // NONE
+      default:
+        return '#FFFFFF';
+    }
+  };
+
+  return (
+    <View
+      style={[
+        styles.tableRow,
+        isOpen && styles.clickedDate,
+        { backgroundColor: containerBackgroundColor },
+      ]}
+    >
+      <TouchableOpacity onPress={onToggle}>
+        <Text style={[styles.tableCell, styles.dateCell]}>{entry.date}</Text>
+      </TouchableOpacity>
+      {isOpen && (
+        <View style={styles.dropdown}>
+          <Text style={styles.encouragement}>Today's Encouragement</Text>
+          <Text
+            style={[
+              styles.emotionPill,
+              { backgroundColor: getEmotionColor(entry.mood) },
+            ]}
+          >
+            {entry.mood}
+          </Text>
+
+          <Text style={styles.paragraphCell}>{entry.entry}</Text>
         </View>
-    );
+      )}
+    </View>
+  );
 }
-
 const styles = StyleSheet.create({
     tableRow: {
         flexDirection: 'column',
@@ -108,3 +129,5 @@ const styles = StyleSheet.create({
         fontFamily: 'Kalam_400Regular',
     },
 });
+
+
