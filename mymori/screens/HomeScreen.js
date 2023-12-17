@@ -1,7 +1,5 @@
 import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from "../components/style_onboarding";
 import styles_btn from "../components/styles_button";

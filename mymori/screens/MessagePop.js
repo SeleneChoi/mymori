@@ -1,12 +1,20 @@
-import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image } from "react-native";
+import { useState, useEffect } from 'react';
+import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image, FlatList } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from "../components/style_onboarding";
 import styles_message from "../components/styles_message";
 
 export default function MessagePop({ navigation }) {
+
+    const [selectedMood, setSelectedMood] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const handleMoodSelection = (mood, category) => {
+        setSelectedMood(mood);
+        setSelectedCategory(category);
+    };
+
+    const isSelected = (mood) => mood === selectedMood;
 
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
@@ -32,36 +40,60 @@ export default function MessagePop({ navigation }) {
                     />
                 </TouchableOpacity>
                 <View style={styles_message.smallbox}>
-                    <TouchableOpacity>
-                        <Text style={styles_message.negative}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Unconfident', 'negative')}
+                    >
+                        <Text
+                            style={isSelected('Unconfident') ? styles_message.selectedButton : styles_message.negative}
+                        >
                             Unconfident
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles_message.negative}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Anxious', 'negative')}
+                    >
+                        <Text
+                            style={isSelected('Anxious') ? styles_message.selectedButton : styles_message.negative}
+                        >
                             Anxious
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles_message.negative}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Nervous', 'negative')}
+                    >
+                        <Text
+                            style={isSelected('Nervous') ? styles_message.selectedButton : styles_message.negative}
+                        >
                             Nervous
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles_message.line}></View>
                 <View style={styles_message.smallbox}>
-                    <TouchableOpacity>
-                        <Text style={styles_message.positive}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Validated', 'positive')}
+                    >
+                        <Text
+                            style={isSelected('Validated') ? styles_message.selectedButton : styles_message.positive}
+                        >
                             Validated
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles_message.positive}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Connected', 'positive')}
+                    >
+                        <Text
+                            style={isSelected('Connected') ? styles_message.selectedButton : styles_message.positive}
+                        >
                             Connected
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles_message.positive}>
+                    <TouchableOpacity
+                        onPress={() => handleMoodSelection('Inspired', 'positive')}
+                    >
+                        <Text
+                            style={isSelected('Inspired') ? styles_message.selectedButton : styles_message.positive}
+                        >
                             Inspired
                         </Text>
                     </TouchableOpacity>
@@ -69,7 +101,7 @@ export default function MessagePop({ navigation }) {
                 <View>
                     <TouchableOpacity
                         style={styles_message.buttonContainer}
-                        onPress={() => navigation.navigate('MessageWriting')}
+                        onPress={() => navigation.navigate('MessageWriting', { selectedMood, selectedCategory })}
                     >
                         <Text style={styles_message.button}>
                             Next
@@ -78,7 +110,7 @@ export default function MessagePop({ navigation }) {
                 </View>
             </View>
 
-        </AnimatedLinearGradient>
+        </AnimatedLinearGradient >
     );
 }
 

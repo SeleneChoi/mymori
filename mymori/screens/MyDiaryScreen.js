@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import MyDiaryData from '../screens/MyDiaryData';
 
-import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
 
 export default function MyDiaryScreen({ navigation }) {
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-    // Load fonts
-    const[fontsLoaded] = useFonts({
-        Comfortaa_400Regular,
-    });
 
         // State to store the diary data
     const [diaryData, setDiaryData] = useState([]);
+    const [isLoaded,setIsLoaded] = useState(false);
 
     // State to track the index of the open dropdown
     const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
@@ -38,6 +32,7 @@ export default function MyDiaryScreen({ navigation }) {
         (result) => {
           // Update the component's state with the fetched diary data
           setDiaryData(result.journals);
+          setIsLoaded(true);
         },
         // Callback function executed on error
         (error) => {
@@ -47,7 +42,7 @@ export default function MyDiaryScreen({ navigation }) {
       );
   }, []); // Dependency array ensures the effect runs only once when the component mounts
 
-  if (!fontsLoaded) {
+  if (!isLoaded) {
     return (
       <View style={styles.container}>
         <ActivityIndicator />

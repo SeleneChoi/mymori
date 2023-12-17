@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Animated, ActivityIndicator, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 
-import { useFonts, Comfortaa_400Regular, Kalam_400Regular } from "@expo-google-fonts/comfortaa";
+import { useFonts, Comfortaa_400Regular } from "@expo-google-fonts/comfortaa";
+import { Kalam_400Regular } from "@expo-google-fonts/kalam";
 
 export default function ConfirmScreen({ navigation }) {
 

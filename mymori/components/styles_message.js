@@ -7,7 +7,7 @@ const styles_message = StyleSheet.create({
         marginHorizontal: 25,
         marginVertical: 50,
         borderRadius: 10,
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
     },
     smallbox: {
@@ -47,6 +47,16 @@ const styles_message = StyleSheet.create({
         paddingVertical: 5,
         textAlign: 'center',
     },
+    selectedButton: {
+        backgroundColor: 'rgba(120, 30, 180, 0.75)',
+        borderRadius: 10,
+        fontFamily: 'Comfortaa_400Regular',
+        fontSize: 16,
+        margin: 6,
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+        textAlign: 'center',
+    },
     buttonContainer: {
         backgroundColor: "#BBAAFB",
         alignSelf: 'center',
@@ -60,16 +70,18 @@ const styles_message = StyleSheet.create({
         color: 'white',
         fontSize: 16,
     },
+
     innerContainer: {
-        height: 200,
+        maxHeight: 200,
+        minHeight: 100,
         borderWidth: 3,
         borderRadius: 5,
         borderColor: "#BBAAFB",
-        marginHorizontal: 15,
-        paddingTop: 25,
+        paddingTop: 10,
         paddingHorizontal: 25,
     },
     message: {
+        width: 240,
         fontFamily: "Kalam_400Regular",
     },
 });

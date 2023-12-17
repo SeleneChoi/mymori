@@ -15,9 +15,9 @@ export default function ReceivedMessagesData({ entry, isOpen, onToggle, index })
             {isOpen && (
                 <View style={styles.dropdownContainer}>
                     <View style={styles.dropdown}>
-                        <Text style={styles.messageTitle}>{entry.title}</Text>
-                        <Text style={styles.messageParagraph}>{entry.paragraph}</Text>
-                        <Text style={styles.messageAuthor}>From: {entry.name}</Text>
+                        <Text style={styles.messageTitle}>You feel {entry.mood} today</Text>
+                        <Text style={styles.messageParagraph}>{entry.message}</Text>
+                        <Text style={styles.messageAuthor}>From: Anonymous Bunny</Text>
                     </View>
                 </View>
             )}

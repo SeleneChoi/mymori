@@ -61,6 +61,7 @@ export default function MyDiaryData({ entry, isOpen, onToggle, index }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
     tableRow: {
         flexDirection: 'column',
